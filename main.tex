@@ -1,0 +1,119 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
+
+% =============== Colors ================
+\definecolor{myaccent}{HTML}{007ACC}
+\setbeamercolor{structure}{fg=myaccent}
+\setbeamercolor{palette primary}{bg=myaccent, fg=white}
+\setbeamercolor{palette secondary}{bg=myaccent, fg=white}
+\setbeamercolor{progress bar}{fg=myaccent}
+\setbeamercolor{title separator}{fg=myaccent}
+\setbeamercolor{block title}{bg=myaccent, fg=white}
+\setbeamercolor{block body}{bg=gray!5, fg=black}
+\setbeamercolor{alerted text}{fg=myaccent}
+\setbeamercolor{alerted text in toc}{fg=myaccent}
+\setbeamercolor{frametitle continuation}{fg=myaccent}
+
+% =============== Fonts ================
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+% Slide main font: JetBrains Mono
+\setmainfont[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *
+]{CHIVO-VARIABLEFONT_WGHT}
+
+\setsansfont[
+  Path = fonts/,
+  Extension = .ttf,
+  UprightFont = *
+]{CHIVO-VARIABLEFONT_WGHT}
+
+% Default math font for slides (Latin Modern Math)
+\setmathfont{Latin Modern Math}
+
+% Thesis style serif for text blocks (optional)
+\newfontfamily\thesisserif{Latin Modern Roman}
+
+% =============== FIX \mathcal + \mathfrak ================
+% Correct \mathcal and \mathfrak to AMS versions
+\usepackage{amsmath, amssymb}
+
+% Use unicode-math for the rest:
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% Now forcibly use AMS versions:
+\let\mathcal\relax
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\let\mathfrak\relax
+\DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
+
+% =============== Extra packages ================
+\usepackage{appendixnumberbeamer}
+\usepackage{stmaryrd}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{stackengine}  % For math symbols
+\usepackage{graphicx}     % For images
+\usepackage{amsthm}       % For theorems
+\usepackage{hyperref}     % For clickable references
+\usepackage{mdframed}
+
+% =============== Done ================
+
+\setbeamertemplate{headline}{}
+%Information to be included in the title page:
+\title{Algebraic Logic of Secrets}
+\author{Omar Gamal Eldin \\52-9805}
+\institute{Supervised by: \textbf{Prof. Haythem O. Ismail}}
+\date{June 25, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%=========OUTLINE=========%
+
+\begin{frame}
+\frametitle{Outline}
+\small
+\tableofcontents
+\end{frame}
+
+%=========INTRO=========%
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Introduction: Text}
+\begin{itemize}
+    \item Text
+    \item {\thesisserif
+      \[
+        \llbracket \text{Mem}(\tau_1, \tau_2) \rrbracket_{\mathcal{V}}^{h,t}
+        = \mathcal{V}(\text{Mem})
+        (\llbracket \tau_1 \rrbracket_{\mathcal{V}}^{h,t}, 
+        \llbracket \tau_2 \rrbracket_{\mathcal{V}}^{h,t}),
+        \quad \tau_1 \in \sigma_A, \; \tau_2 \in \sigma_G.
+      \]
+    }
+    \item \[\mathfrak{AS}\]
+\end{itemize}
+\end{frame}
+
+%=========TEXT=========%
+
+\section{Text1}
+\subsection{Text2}
+
+%=========CONSLUSION=========%
+
+\section{Conclusion}
+
+%=========END=========%
+
+\end{document}
