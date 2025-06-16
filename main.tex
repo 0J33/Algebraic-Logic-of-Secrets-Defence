@@ -1,18 +1,39 @@
-\documentclass[aspectratio=169]{beamer}
-\usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
+% \documentclass[aspectratio=169]{beamer}
+% \usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
 
 % =============== Colors ================
-\definecolor{myaccent}{HTML}{007ACC}
-\setbeamercolor{structure}{fg=myaccent}
-\setbeamercolor{palette primary}{bg=myaccent, fg=white}
-\setbeamercolor{palette secondary}{bg=myaccent, fg=white}
-\setbeamercolor{progress bar}{fg=myaccent}
-\setbeamercolor{title separator}{fg=myaccent}
-\setbeamercolor{block title}{bg=myaccent, fg=white}
-\setbeamercolor{block body}{bg=gray!5, fg=black}
-\setbeamercolor{alerted text}{fg=myaccent}
-\setbeamercolor{alerted text in toc}{fg=myaccent}
-\setbeamercolor{frametitle continuation}{fg=myaccent}
+\documentclass[aspectratio=169]{beamer}
+
+% === 1. THEME ===
+\usetheme{default}  % Classic beamer, no modern twist
+\usecolortheme{default}
+\useinnertheme{default}
+\useoutertheme{default}
+
+% === 2. GRID BACKGROUND ===
+\usepackage{tikz}
+\usebackgroundtemplate{
+  \tikz[overlay,remember picture] 
+    \draw[step=0.5cm,gray!30] (current page.south west) grid (current page.north east);
+}
+
+% === 3. COLORS ===
+% Keep the accent for blocks or headings if you want blue — or set to black for a 1:1 replica.
+\definecolor{myaccent}{HTML}{007ACC} % or just black
+
+% Title & frametitle bar: gray box with black text
+\setbeamercolor{title}{bg=gray!60, fg=black}
+\setbeamercolor{frametitle}{bg=gray!60, fg=black}
+
+% Block title bar: black bar with white text (like "Deceptive Pretense")
+\setbeamercolor{block title}{bg=black, fg=white}
+\setbeamercolor{block body}{bg=white, fg=black}
+
+% Structure for lists and TOC bullets
+\setbeamercolor{structure}{fg=black}
+
+% Disable nav symbols
+\setbeamertemplate{navigation symbols}{}
 
 % =============== Fonts ================
 \usepackage{fontspec}
@@ -67,10 +88,10 @@
 
 \setbeamertemplate{headline}{}
 %Information to be included in the title page:
-\title{Algebraic Logic of Secrets}
-\author{Omar Gamal Eldin \\52-9805}
-\institute{Supervised by: \textbf{Prof. Haythem O. Ismail}}
-\date{June 25, 2025}
+\title{\Huge Algebraic Logic of Secrets}
+\author{Made By: \textbf{Omar Gamal Eldin}\\Supervised by: \textbf{Prof. Haythem O. Ismail}}
+\institute{}
+\date{}
 
 \begin{document}
 
@@ -108,11 +129,33 @@
 %=========TEXT=========%
 
 \section{Text1}
+\begin{frame}
+\frametitle{Text1: Text}
+\begin{itemize}
+    \item Text
+\end{itemize}
+\end{frame}
+
 \subsection{Text2}
+
+\begin{frame}
+\frametitle{Text1: Text}
+\begin{itemize}
+    \item Text
+\end{itemize}
+\end{frame}
+
 
 %=========CONSLUSION=========%
 
 \section{Conclusion}
+
+\begin{frame}
+\frametitle{Text1: Text}
+\begin{itemize}
+    \item Text
+\end{itemize}
+\end{frame}
 
 %=========END=========%
 
