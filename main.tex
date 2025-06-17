@@ -1,100 +1,68 @@
-% \documentclass[aspectratio=169]{beamer}
-% \usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
-
-% =============== Colors ================
+% Classic Beamer setup
 \documentclass[aspectratio=169]{beamer}
-
-% === 1. THEME ===
-\usetheme{default}  % Classic beamer, no modern twist
+\usetheme{default}
 \usecolortheme{default}
 \useinnertheme{default}
 \useoutertheme{default}
 
-% === 2. GRID BACKGROUND ===
+% Grid background
 \usepackage{tikz}
 \usebackgroundtemplate{
-  \tikz[overlay,remember picture] 
+  \tikz[overlay,remember picture]
     \draw[step=0.5cm,gray!30] (current page.south west) grid (current page.north east);
 }
 
-% === 3. COLORS ===
-% Keep the accent for blocks or headings if you want blue — or set to black for a 1:1 replica.
-\definecolor{myaccent}{HTML}{007ACC} % or just black
-
-% Title & frametitle bar: gray box with black text
+% Colors
+\definecolor{myaccent}{HTML}{007ACC}
 \setbeamercolor{title}{bg=gray!60, fg=black}
 \setbeamercolor{frametitle}{bg=gray!60, fg=black}
-
-% Block title bar: black bar with white text (like "Deceptive Pretense")
 \setbeamercolor{block title}{bg=black, fg=white}
 \setbeamercolor{block body}{bg=white, fg=black}
-
-% Structure for lists and TOC bullets
 \setbeamercolor{structure}{fg=black}
-
-% Disable nav symbols
 \setbeamertemplate{navigation symbols}{}
 
-% =============== Fonts ================
+% Fonts
 \usepackage{fontspec}
 \usepackage{unicode-math}
-
-% Slide main font: JetBrains Mono
 \setmainfont[
   Path = fonts/,
   Extension = .ttf,
   UprightFont = UniversRegular,
   BoldFont = UniversBold
 ]{UniversRegular}
-
 \setsansfont[
   Path = fonts/,
   Extension = .ttf,
   UprightFont = UniversRegular,
   BoldFont = UniversBold
 ]{UniversRegular}
-
-% Default math font for slides (Latin Modern Math)
 \setmathfont{Latin Modern Math}
-
-% Thesis style serif for text blocks (optional)
 \newfontfamily\thesisserif{Latin Modern Roman}
 
-% =============== FIX \mathcal + \mathfrak ================
-% Correct \mathcal and \mathfrak to AMS versions
+% Fix \mathcal & \mathfrak
 \usepackage{amsmath, amssymb}
-
-% Use unicode-math for the rest:
-\usepackage{unicode-math}
-\setmathfont{Latin Modern Math}
-
-% Now forcibly use AMS versions:
 \let\mathcal\relax
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
-
 \let\mathfrak\relax
 \DeclareMathAlphabet{\mathfrak}{U}{euf}{m}{n}
 
-% =============== Extra packages ================
+% Extra packages
 \usepackage{appendixnumberbeamer}
 \usepackage{stmaryrd}
-\usepackage{amsmath}
-\usepackage{tikz}
-\usepackage{stackengine}  % For math symbols
-\usepackage{graphicx}     % For images
-\usepackage{amsthm}       % For theorems
-\usepackage{hyperref}     % For clickable references
+\usepackage{stackengine}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{hyperref}
 \usepackage{mdframed}
 
-% =============== Done ================
-
+% Title info
 \setbeamertemplate{headline}{}
-%Information to be included in the title page:
 \title{\Huge \textbf{Algebraic Logic of Secrets}}
 \author{Made By: \textbf{Omar Gamal Eldin}\\Supervised by: \textbf{Prof. Haythem O. Ismail}}
 \institute{}
 \date{}
 
+% GUC logo
 \addtobeamertemplate{title page}{
   \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south west,xshift=1.15em,yshift=1.1em] at (current page.south west) {
@@ -103,8 +71,15 @@
   \end{tikzpicture}
 }{}
 
+% Outline bullets
 \setbeamertemplate{section in toc}{\textbullet\ \inserttocsection}
 \setbeamertemplate{subsection in toc}{\hspace{1.5em}\textbullet\ \inserttocsubsection}
+
+% Custom commands
+
+\newcommand{\nec}{\Box}
+\newcommand{\pos}{\Diamond}
+\newcommand{\BoxStar}{\fboxsep=1pt\fbox{$\ast$}}
 
 \begin{document}
 
@@ -149,10 +124,10 @@
 \end{itemize}
 \end{frame}
 
-\subsection{Text2}
+\subsection{Text1.1}
 
 \begin{frame}
-\frametitle{Text1: Text}
+\frametitle{Text1.1: Text}
 \begin{itemize}
     \item Text
 \end{itemize}
@@ -164,12 +139,23 @@
 \section{Conclusion}
 
 \begin{frame}
-\frametitle{Text1: Text}
+\frametitle{Conclusion: Text}
 \begin{itemize}
-    \item Text
+    \item Conslusion
 \end{itemize}
 \end{frame}
 
 %=========END=========%
+
+\begin{frame}[c]
+\centering
+\Huge
+\textbf{Thank you!}
+
+\vspace{1cm}
+
+\LARGE
+Questions?
+\end{frame}
 
 \end{document}
