@@ -43,14 +43,16 @@
 \setmainfont[
   Path = fonts/,
   Extension = .ttf,
-  UprightFont = *
-]{CHIVO-VARIABLEFONT_WGHT}
+  UprightFont = UniversRegular,
+  BoldFont = UniversBold
+]{UniversRegular}
 
 \setsansfont[
   Path = fonts/,
   Extension = .ttf,
-  UprightFont = *
-]{CHIVO-VARIABLEFONT_WGHT}
+  UprightFont = UniversRegular,
+  BoldFont = UniversBold
+]{UniversRegular}
 
 % Default math font for slides (Latin Modern Math)
 \setmathfont{Latin Modern Math}
@@ -88,10 +90,21 @@
 
 \setbeamertemplate{headline}{}
 %Information to be included in the title page:
-\title{\Huge Algebraic Logic of Secrets}
+\title{\Huge \textbf{Algebraic Logic of Secrets}}
 \author{Made By: \textbf{Omar Gamal Eldin}\\Supervised by: \textbf{Prof. Haythem O. Ismail}}
 \institute{}
 \date{}
+
+\addtobeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,xshift=1.15em,yshift=1.1em] at (current page.south west) {
+      \includegraphics[height=1.4cm]{images/GUC.jpg}
+    };
+  \end{tikzpicture}
+}{}
+
+\setbeamertemplate{section in toc}{\textbullet\ \inserttocsection}
+\setbeamertemplate{subsection in toc}{\hspace{1.5em}\textbullet\ \inserttocsubsection}
 
 \begin{document}
 
