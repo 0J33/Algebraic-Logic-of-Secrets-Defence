@@ -9,7 +9,7 @@
 \usepackage{tikz}
 \usebackgroundtemplate{
   \tikz[overlay,remember picture]
-    \draw[step=0.5cm,gray!30] (current page.south west) grid (current page.north east);
+    \draw[step=0.1cm,gray!30] (current page.south west) grid (current page.north east);
 }
 
 % Colors
@@ -79,6 +79,16 @@
 % === Frametitle font size ===
 \setbeamerfont{frametitle}{size=\Huge,series=\bfseries}
 
+\makeatletter
+\setbeamertemplate{frametitle}{
+  \vskip0.1em
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1ex,leftskip=1em]{frametitle}
+    \insertframetitle
+  \end{beamercolorbox}
+  \vskip0.1em
+}
+\makeatother
+
 % Custom commands
 
 \newcommand{\nec}{\Box}
@@ -104,139 +114,167 @@
 \begin{frame}
 \frametitle{Introduction}
 \begin{itemize}
-    \item Artificial agents are increasingly embedded in human environments.
-    \item Understanding social concepts like secrecy is essential for trust and privacy.
-    \item Existing logic frameworks often ignore everyday secrecy scenarios.
-    \item This work bridges that gap with a new formal logic of secrets.
-\end{itemize}
-\end{frame}
-
-\subsection{Motivation \& Aim}
-
-\begin{frame}
-\frametitle{Motivation \& Aim}
-\begin{itemize}
-  \item Agents must recognize, respect, and act on secrets in real-world settings.
-  \item Existing models focus on security protocols, not social interactions.
-  \item This thesis develops a logic that combines:
-  \begin{itemize}
-    \item Belief
-    \item Intention
-    \item Revelation
-    \item Time
-  \end{itemize}
-  \item Aim: A compositional, algebraic logic for secrecy in multi-agent systems.
+    \item Text
 \end{itemize}
 \end{frame}
 
 %=========Background=========%
 
 \section{Background}
-\begin{frame}
-\frametitle{Propositional \& Modal Logic}
+
 \subsection{Propositional \& Modal Logic}
-\begin{itemize}
-    \item Propositional Logic (PPL):
+\begin{frame}
+\frametitle{Propositional Logic}
+    \Large 
+    \textbf{Propositional Logic (PPL):}
     \begin{itemize}
         \item Basic true/false statements combined with connectives.
         \item No context or agents.
+        \begin{block}{Example}
+            \[
+            p \wedge q \rightarrow r
+            \]
+        \end{block}
     \end{itemize}
-    \item Propositional Modal Logic (PML):
-    \begin{itemize}
-        \item Adds modal operators:
-        \[
-        \Box p, \quad \Diamond p
-        \]
-        \item Uses possible worlds semantics.
-    \end{itemize}
-    \item Foundation for modeling knowledge, belief, and secrecy.
-\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Kripke Models}
-\begin{itemize}
-    \item Used to give semantics to PML and FOML.
-    \item Structure:
+\frametitle{Modal Logic}
+    \Large 
+    \textbf{Propositional Modal Logic (PML):}
     \begin{itemize}
-        \item Possible worlds (states).
-        \item Accessibility relation between worlds.
-        \item Valuation function for propositions.
+        \item Adds modal operators: \\
+        Necessity ($\Box$) and possibility ($\Diamond$).
+        \item Uses possible worlds semantics.
+        \begin{block}{Example}
+            \[
+            \Box p \rightarrow q, \quad
+            \Diamond r \rightarrow \Box \neg s.
+            \]
+        \end{block}
     \end{itemize}
-    \item Notation:
-    \[
-    \mathcal{M = (W, R, A)}
-    \]
-    \item Limitations:
-    \begin{itemize}
-        \item Complex for real-world agents.
-        \item Leads to paradoxes in belief and secrecy.
-    \end{itemize}
-    \item Algebraic logic avoids these by replacing worlds with algebraic operations.
-\end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{First-Order Modal Logic (FOML)}
+    \Large 
+    \textbf{First-Order Modal Logic (FOML):}
+    \begin{itemize}
+        \item Extends PML with quantifiers and predicates.
+        \item Allows reasoning about properties of objects.
+        \begin{block}{Example}
+            \[
+            \forall x (\Box P(x) \rightarrow Q(x)).
+            \]
+        \end{block}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Interpretation of Modal Logic}
+\Large
+\begin{itemize}
+    \item A model $\mathcal{M} = (W, R, A)$ assigns truth to formulas at each world $w \in W$.
+\end{itemize}
+\begin{block}{Basic interpretation rules:}
+\[
+\llbracket T \rrbracket^{\mathcal{M}, w} = \top, 
+\quad 
+\llbracket F \rrbracket^{\mathcal{M}, w} = \bot, 
+\quad 
+\llbracket P \rrbracket^{\mathcal{M}, w} = A(P)(w)
+\]
+\end{block}
+\end{frame}
 
 %=========Theory of Secrets=========%
 
 \section{Theory of Secrets}
 
-\subsection{Intuitions About Secrets}
+\begin{frame}
+\frametitle{Theory of Secrets}
+
+\Large What is a Secret?
+
+\vspace{1em}
+
+\begin{block}{Definition (Secretum and Secreta):}  
+Objects of secrecy, called \emph{secreta} (plural of \emph{secretum}), are the propositions representing confidential information.  
+Secrets are not these objects themselves, but relations between \emph{secreta} and other entities (e.g., secret keepers and nescients).
+\end{block}
+\end{frame}
+
+\subsection{Intuitions About Secrects}
 \begin{frame}
 \frametitle{Intuitions About Secrets}
 \begin{itemize}
-    \item Secrets play a key role in trust, privacy, and social reasoning.
-    \item A secret is not an object but a relation between information and agents.
-    \item Requires:
-    \begin{itemize}
-        \item Secret keepers (know and keep it)
-        \item Nescients (do not know)
-        \item A secrecy condition
-    \end{itemize}
-    \item Secrets are temporary and context-dependent.
+    \item Secrets are distinct from \textbf{secreta} (the propositions being kept secret).
+    \item \textbf{Secreta} are propositions, not physical entities.
+    \item Secrets require at least one \textbf{secret keeper}.
+    \item Secrets require at least one \textbf{nescient} (someone kept unaware).
+    \item Keepers and nescients form structured groups, which can change over time.
+    \item A secret exists only under a valid \textbf{secrecy condition}.
+    \item Secrets are inherently \textbf{temporary} — they expire or get revealed.
+    \item Secret keepers \textbf{believe} the secreta and the condition.
+    \item Secret keepers do \textbf{not believe} it has been revealed.
+    \item Secret keepers \textbf{intend} to prevent revelation while the condition holds.
 \end{itemize}
 \end{frame}
 
 \subsection{Formal Structure of Secrets}
 \begin{frame}
 \frametitle{Formal Structure of Secrets}
+{\Large
 \begin{itemize}
     \item Key components:
     \begin{itemize}
+        \Large 
         \item Secretum ($\phi$): the confidential proposition.
         \item Secret Keepers (K): agents maintaining secrecy.
         \item Nescients (N): agents from whom the secret is hidden.
         \item Secrecy Condition ($\psi$): governs how long secrecy holds.
         \item Time (t): when secrecy is evaluated.
     \end{itemize}
-    \item Notation: 
+    {\small
+    \begin{block}{Notation:}
     \[
     Secret(\phi, K, N, \psi, t)
     \]
+    \end{block}
+    }
 \end{itemize}
+}
 \end{frame}
 
-\subsection{FOML Representation}
 \begin{frame}
-\frametitle{First-Order Modal Logic (FOML)}
+\frametitle{Logical Representation}
 \begin{itemize}
     \item Secrecy modeled using FOML with quantification and time.
-    \item Core operators:
-    \[
-    B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), 
-    \quad H(\phi, t), \quad Mem(A, G)
+    \begin{block}{Core operators:}
+    \[ 
+    B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G) 
     \]
-    \item Short form: $O(\alpha, \beta, t)$ means $H(O(\alpha, \beta), t)$.
+    \normalsize where:
+    \begin{itemize}
+        \item $B(A, \phi)$: Agent A believes $\phi$.
+        \item $I(A, \phi)$: Agent A intends to keep $\phi$ secret.
+        \item $R(A, \phi)$: Agent A reveals $\phi$.
+        \item $H(\phi, t)$: Holds at time $t$.
+        \item $Mem(A, G)$: Agent A is a member of group G.
+    \end{itemize}
+    \end{block}
 \end{itemize}
 \end{frame}
 
 \subsection{Types of Secrets}
 \begin{frame}
 \frametitle{Types of Secrets}
+\Large
 \begin{itemize}
     \item $Secret_0$: basic secrecy (keepers believe, intend, and do not believe it's revealed).
     \item Stronger types:
     \begin{itemize}
+        \Large
         \item $S_1$: $\phi$ not actually revealed.
         \item $S_2$: keepers know they keep it.
         \item $S_3$: keepers believe it hasn't been revealed.
@@ -250,18 +288,16 @@
 \subsection{Modeling Time with VEL}
 \begin{frame}
 \frametitle{Modeling Time with VEL}
+\Large
 \begin{itemize}
     \item Versatile Event Logic (VEL) structures time as branching histories.
     \item Each moment has:
     \begin{itemize}
+        \Large
         \item Unique past
         \item Multiple possible futures
     \end{itemize}
     \item Secrets persist unless an event changes them.
-    \item Use:
-    \[
-    Occurs(e, \delta), \quad H(\phi, t)
-    \]
 \end{itemize}
 \end{frame}
 
@@ -272,11 +308,12 @@
 \subsection{Modal vs Algebraic Logic}
 \begin{frame}
 \frametitle{Modal vs Algebraic Logic}
+\Large
 \begin{itemize}
-    \item Modal logic uses possible worlds to model knowledge and secrecy.
-    \item Requires accessibility relations and world structures.
-    \item Algebraic logic replaces worlds with compositional algebraic operations.
-    \item Provides clearer, paradox-free reasoning.
+    \item \textbf{Modal Logic:} Possible worlds semantics; uses necessity ($\Box$) and possibility ($\Diamond$) operators.
+    \item \textbf{Algebraic Logic:} Explicit algebraic structures (e.g., Boolean algebras).
+    \item More transparent reasoning steps.
+    \item Avoids paradoxes (e.g., self-reference).
     \item Better suited for explainable agent models.
 \end{itemize}
 \end{frame}
@@ -284,61 +321,86 @@
 \subsection{Algebraic Logic of Belief ($Log_AB$)}
 \begin{frame}
 \frametitle{Algebraic Logic of Belief ($Log_AB$)}
+\Large
 \begin{itemize}
     \item Avoids possible-world semantics by using Boolean algebra.
-    \item Belief is a function:
+    \begin{block}{Belief function:}
     \[
     B(a, p)
     \]
-    where:
+    \normalsize where:
     \begin{itemize}
-        \item $a$: agent
-        \item $p$: proposition
+        \item $B(a, p)$: agent $a$ believes proposition $p$.
     \end{itemize}
-    \item Properties:
-    \begin{itemize}
-        \item Consistency
-        \item Introspection
-        \item Distribution
-    \end{itemize}
-    \item No paradoxes from self-reference.
+    \end{block}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Properties of $Log_AB$}
-\begin{itemize}
-    \item LogAB models belief using Boolean algebra.
-    \item Key properties:
-    \begin{itemize}
-        \item \textbf{Consistency:} Agents do not believe contradictions.
-        \item \textbf{Positive Introspection:} Agents know what they believe.
-        \item \textbf{Negative Introspection:} Agents know what they do not believe.
-        \item \textbf{Distribution:} Belief distributes over logical connectives.
-    \end{itemize}
-    \item Example:
-    \[
-    B(a, p \wedge q) \equiv B(a, p) \wedge B(a, q)
-    \]
-    \item Avoids paradoxes by not relying on possible worlds.
-\end{itemize}
+\centering
+{\small
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{4cm}|p{9.5cm}|}
+    \hline
+    \textbf{Property} & \textbf{$Log_AB$ Term} \\
+    \hline
+    Meet-distributivity & $\forall a, p_1, p_2\,[B(a, p_1) \wedge B(a, p_2) \Leftrightarrow B(a, p_1 \wedge p_2)]$ \\
+    \hline
+    Join-distributivity & $\forall a, p_1, p_2\,[B(a, p_1) \vee B(a, p_2) \Leftrightarrow B(a, p_1 \vee p_2)]$ \\
+    \hline
+    Conceit & $\forall a, p\,[B(a, p) \Rightarrow p]$ \\
+    \hline
+    Consistency & $\forall a, p\,[B(a, \neg p) \Rightarrow \neg B(a, p)]$ \\
+    \hline
+    Autoepistemology & $\forall a, p\,[\neg B(a, p) \Rightarrow B(a, \neg p)]$ \\
+    \hline
+    Positive introspection & $\forall a, p\,[B(a, p) \Rightarrow B(a, B(a, p))]$ \\
+    \hline
+    Negative introspection & $\forall a, p\,[\neg B(a, p) \Rightarrow B(a, \neg B(a, p))]$ \\
+    \hline
+    Positive faithfulness & $\forall a, p\,[B(a, B(a, p)) \Rightarrow B(a, p)]$ \\
+    \hline
+    Negative faithfulness & $\forall a, p\,[B(a, \neg B(a, p)) \Rightarrow \neg B(a, p)]$ \\
+    \hline
+\end{tabular}
+}
 \end{frame}
 
 \subsection{Algebraic Logic of States ($Log_AS$)}
 \begin{frame}
 \frametitle{Algebraic Logic of States ($Log_AS$)}
+\Large 
 \begin{itemize}
-    \item Extends $Log_AB$ to model states over time.
     \item States are terms in a Boolean algebra.
-    \item Uses:
+    \begin{block}{Holding and Time Ordering functions:}
     \[
     HoldsAt(s, t), \quad t_1 \prec t_2
     \]
-    \item Classifies states:
+    \normalsize where:
     \begin{itemize}
-        \item Eternal, Permanent, Temporary, etc.
+        \item $HoldsAt(s, t)$: state $s$ holds at time $t$.
+        \item $t_1 \prec t_2$: time $t_1$ precedes $t_2$.
     \end{itemize}
-    \item Unifies states and propositions in one framework.
+    \end{block}
+\end{itemize}
+\end{frame}
+
+\subsection{State Classifications in $Log_AS$}
+\begin{frame}
+\frametitle{State Classifications in $Log_AS$}
+\Large
+\begin{itemize}
+    \item States are classified by temporal stability:
+    \begin{itemize}
+        \Large 
+        \item \textbf{ETER (Eternal)}: is the same at all times.
+        \item \textbf{ATEMP (Atemporal)}: unchanged, doesn't depend on time.
+        \item \textbf{PERM (Permanent)}: once holds, never stops holding.
+        \item \textbf{CO-PERM (Co-Permanent)}: compliment of a permanent state.
+        \item \textbf{TEMP (Temporary)}: may change over time.
+        \item \textbf{TRANS (Transient)}: stops and starts holding over time.
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -350,121 +412,119 @@
 \begin{frame}
 \frametitle{$Log_ASec$: Language}
 \begin{itemize}
-    \item Combines $Log_AB$, $Log_AS$, and VEL into one framework.
-    \item Many-sorted algebraic structure:
+    \item Combines $Log_AB$, $Log_AS$, and VEL into one framework to model secrets.
+    \item Sorts:
     \begin{itemize}
-        \item Propositions ($\sigma_P$)
-        \item Agents ($\sigma_A$)
+        \item Propositions ($\sigma_P$) (atemporal states)
+        \item Agents ($\sigma_A$) $\subseteq$ Individuals ($\sigma_I$)
         \item Groups ($\sigma_G$)
         \item Time ($\sigma_T$)
         \item States ($\sigma_S$)
     \end{itemize}
-    \item Adds:
+    \begin{block}{Functions:}
     \[
     B(a, p), \; I(a, p), \; R(a, p), \;
     Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
     \]
+    \end{block}
 \end{itemize}
 \end{frame}
 
-\subsection{Axioms, Theorems, and Proof Sketches}
+\subsection{Axioms, Theorems, and Proofs}
 \begin{frame}
 \frametitle{Key Axioms and Theorems}
+\Large 
 \begin{itemize}
     \item Belief follows KD45:
     \begin{itemize}
-        \item Consistency, introspection, distribution.
+        \Large 
+        \item Distribution, consistency, positive introspection, and negative introspection.
     \end{itemize}
     \item Intention follows KD:
     \begin{itemize}
-        \item Consistent intentions.
+        \Large 
+        \item Distribution, consistency.
     \end{itemize}
-    \item Revelation:
-    \begin{itemize}
-        \item Based on evidence.
-        \item Propagates truth.
-    \end{itemize}
-    \item Theorems:
-    \[
-    B(a, p) \Rightarrow R(a, p), \;
-    R(a, p \wedge q) \Rightarrow R(a, p) \wedge R(a, q), \;
-    R(a, p) \Leftrightarrow R(a, R(a, p))
-    \]
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Proof Sketches}
+\frametitle{Key Axioms and Theorems} % Axioms
 \begin{itemize}
-    \item Proofs follow directly from axioms.
-    \item Example: $R(a, p \wedge q) \Rightarrow R(a, p)$ using R3.
-    \item Belief-Revelation bridge:
-    \begin{itemize}
-        \item $B(a, p)$ + BR1 $\Rightarrow$ $R(a, p)$.
-    \end{itemize}
-    \item Logical omniscience affects proofs:
-    \begin{itemize}
-        \item Some fail if K axiom is removed.
-    \end{itemize}
+    \item Text
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Axioms and Theorems} % Theorems
+\begin{itemize}
+    \item Text
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proofs}
+\begin{itemize}
+    \item Text
 \end{itemize}
 \end{frame}
 
 \subsection{Removing Logical Omniscience}
 \begin{frame}
 \frametitle{Removing Logical Omniscience}
+\Large 
 \begin{itemize}
-    \item Classical logics assume agents know all consequences of beliefs.
-    \item Unrealistic for bounded agents.
-    \item $Log_ASec$ drops the K axiom:
+    \item Logical omniscience is undesirable in agent models. In order to avoid it, we drop the K axiom:
+    \begin{block}{K Axiom:}
     \[
-    B(a, p) \wedge B(a, p \Rightarrow q) \Rightarrow B(a, q)
+    B(a, p) \wedge B(a, p \rightarrow q) \rightarrow B(a, q)
     \]
-    \item Result:
-    \begin{itemize}
-        \item No forced deduction.
-        \item Some theorems fail, e.g., $B(a, p) \Rightarrow B(a, R(a, p))$.
-    \end{itemize}
-    \item Models resource-limited reasoning.
+    \end{block}
+    \begin{block}{Result:}
+        Theorems 4 fails: 
+        \[
+        B(a, p) \rightarrow B(a, R(a, p))
+        \]
+    \end{block}
 \end{itemize}
 \end{frame}
 
 %=========Example=========%
 
-%=========EXAMPLE SCENARIO=========%
-
-\section{Example Scenario}
-
 \begin{frame}
 \frametitle{Example: Secret in a Group}
 \begin{itemize}
+    \Large
     \item Scenario:
     \begin{itemize}
-        \item Agents A, B, and C.
-        \item Secret $\phi$ known by A and B.
+        \Large
+        \item Agents $x$, $y$, and $z$.
+        \item Secret $\phi$ known by $x$ and $y$.
         \item C must not know $\phi$.
     \end{itemize}
     \item Formalization:
     \[
-    Secret(\phi, \{A,B\}, \{C\}, \psi, t)
+    Secret(\phi, \{x,y\}, \{z\}, \psi, t)
     \]
-    \item Secrecy condition $\psi$: Holds until A or B reveals $\phi$.
+    \item Secrecy condition $\psi$: Holds until $x$ or $y$ reveals $\phi$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{How $Log_ASec$ Models It}
 \begin{itemize}
+    \Large 
     \item Belief:
     \[
-    B(A, \phi), \; B(B, \phi), \; \neg B(C, \phi)
+    B(x, \phi), \; B(y, \phi), \; \neg B(C, \phi)
     \]
     \item Intention:
     \[
-    I(A, \neg R(A, \phi)), \; I(B, \neg R(B, \phi))
+    I(x, \neg R(z, \phi)), \; I(y, \neg R(z, \phi))
     \]
     \item Membership:
     \[
-    Mem(A, K), \; Mem(B, K), \; Mem(C, N)
+    Mem(x, K), \; Mem(y, K), \; Mem(z, N)
     \]
     \item Temporal:
     \[
@@ -476,9 +536,11 @@
 \begin{frame}
 \frametitle{Secrecy Evolution}
 \begin{itemize}
+    \Large
     \item If A reveals $\phi$ at $(h,t)$:
     \begin{itemize}
-        \item $R(A, \phi)$ holds at $(h,t)$.
+        \Large
+        \item $R(z, \phi)$ holds at $(h,t)$.
         \item Secrecy condition $\psi$ no longer holds at $(h,t)$.
         \item C may learn $\phi$ in the future.
     \end{itemize}
@@ -488,7 +550,6 @@
     \Longrightarrow 
     \llbracket \psi \rrbracket^{h,t} = \text{false}
     \]
-    \item Supports reasoning about possible future histories.
 \end{itemize}
 \end{frame}
 
@@ -500,11 +561,13 @@
 \begin{frame}
 \frametitle{Key Contributions}
 \begin{itemize}
-    \item Developed a new algebraic logic for secrecy.
-    \item Unified belief, intention, revelation, and time in one framework.
-    \item Avoided paradoxes of possible-worlds semantics.
-    \item Modeled secrecy evolution over branching time.
-    \item Provided formal proofs and an example scenario.
+    \Large
+    \item Developed a new algebraic logic for secrecy ($Log_ASec$).
+    \item Integrated belief, states, Versatile Event Logic, and secrecy conditions.
+    \item Defined syntax, semantics, and axioms for core operators.
+    \item Removed logical omniscience (K axiom) for realistic agent modeling.
+    \item Established a flexible foundation for theory and applications.
+    \item Provided formal proofs and a worked scenario.
 \end{itemize}
 \end{frame}
 
@@ -512,17 +575,17 @@
 \begin{frame}
 \frametitle{Future Directions}
 \begin{itemize}
-    \item Extend $Log_ASec$ to handle uncertainty and noisy channels.
-    \item Integrate with AI planning and multi-agent systems.
-    \item Automate secrecy checks using theorem provers.
-    \item Apply to real-world privacy and information security use cases.
+    \Large
+    \item Complete proofs for all theorems not covered.
     \item Could be implemented in Prolog for automated secrecy reasoning.
+    \item Simulate agent reasoning in secrecy scenarios.
+    \item Apply to real-world privacy and information security use cases.
+    \item Further refinement of axioms and theorems.
 \end{itemize}
 \end{frame}
 
 %=========References=========%
 
-\section{References}
 \begin{frame}
 \frametitle{References}
 \footnotesize
