@@ -110,11 +110,37 @@
 %=========Introduction=========%
 
 \section{Introduction}
-
 \begin{frame}
 \frametitle{Introduction}
+\Large
 \begin{itemize}
-    \item Text
+    \item Secrecy is vital for trust, privacy, and communication in social interactions.
+    \item Existing logics rarely model secrecy in everyday agent reasoning.
+    \item This work introduces $Log_ASec$, an algebraic logic of secrets.
+    \item Integrates belief, intention, revelation, and Versatile Event Logic.
+    \item Aims to enable realistic, explainable reasoning in multi-agent systems.
+\end{itemize}
+\end{frame}
+
+\subsection{Secrets}
+\begin{frame}
+\frametitle{What is a Secret?}
+\Large
+\begin{itemize}
+    \item \textbf{Secrets} are a true piece of information that is kept hidden from others.
+    \item Examples:
+    \begin{itemize}
+        \item Classified military maps.
+        \item Exam questions before release.
+        \item Personal information like passwords.
+        \item Credit card PINs.
+        \item Hidden treasure locations.
+        % \item Corporate trade secrets.
+        % \item Sensitive medical records.
+        % \item Political strategies.
+        % \item Personal relationships (e.g., romantic interests).
+    \end{itemize}
+    \item A Secret is not just the information itself, but rather that it holds a specific confidential meaning.
 \end{itemize}
 \end{frame}
 
@@ -130,12 +156,12 @@
     \begin{itemize}
         \item Basic true/false statements combined with connectives.
         \item No context or agents.
-        \begin{block}{Example}
-            \[
-            p \wedge q \rightarrow r
-            \]
-        \end{block}
     \end{itemize}
+    \begin{block}{Example}
+        \[
+        p \wedge q \rightarrow r
+        \]
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -146,13 +172,13 @@
         \item Adds modal operators: \\
         Necessity ($\Box$) and possibility ($\Diamond$).
         \item Uses possible worlds semantics.
-        \begin{block}{Example}
-            \[
-            \Box p \rightarrow q, \quad
-            \Diamond r \rightarrow \Box \neg s.
-            \]
-        \end{block}
     \end{itemize}
+    \begin{block}{Example}
+        \[
+        \Box p \rightarrow q, \quad
+        \Diamond r \rightarrow \Box \neg s.
+        \]
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -162,12 +188,12 @@
     \begin{itemize}
         \item Extends PML with quantifiers and predicates.
         \item Allows reasoning about properties of objects.
-        \begin{block}{Example}
-            \[
-            \forall x (\Box P(x) \rightarrow Q(x)).
-            \]
-        \end{block}
     \end{itemize}
+    \begin{block}{Example}
+        \[
+        \forall x (\Box P(x) \rightarrow Q(x)).
+        \]
+    \end{block}
 \end{frame}
 
 \begin{frame}
@@ -235,14 +261,14 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
         \item Secrecy Condition ($\psi$): governs how long secrecy holds.
         \item Time (t): when secrecy is evaluated.
     \end{itemize}
-    {\small
-    \begin{block}{Notation:}
-    \[
-    Secret(\phi, K, N, \psi, t)
-    \]
-    \end{block}
-    }
 \end{itemize}
+}
+{\small
+\begin{block}{Notation:}
+\[
+Secret(\phi, K, N, \psi, t)
+\]
+\end{block}
 }
 \end{frame}
 
@@ -250,20 +276,20 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
 \frametitle{Logical Representation}
 \begin{itemize}
     \item Secrecy modeled using FOML with quantification and time.
-    \begin{block}{Core operators:}
-    \[ 
-    B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G) 
-    \]
-    \normalsize where:
-    \begin{itemize}
-        \item $B(A, \phi)$: Agent A believes $\phi$.
-        \item $I(A, \phi)$: Agent A intends to keep $\phi$ secret.
-        \item $R(A, \phi)$: Agent A reveals $\phi$.
-        \item $H(\phi, t)$: Holds at time $t$.
-        \item $Mem(A, G)$: Agent A is a member of group G.
-    \end{itemize}
-    \end{block}
 \end{itemize}
+\begin{block}{Core operators:}
+\[ 
+B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G) 
+\]
+\normalsize where:
+\begin{itemize}
+    \item $B(A, \phi)$: Agent A believes $\phi$.
+    \item $I(A, \phi)$: Agent A intends to keep $\phi$ secret.
+    \item $R(A, \phi)$: Agent A reveals $\phi$.
+    \item $H(\phi, t)$: Holds at time $t$.
+    \item $Mem(A, G)$: Agent A is a member of group G.
+\end{itemize}
+\end{block}
 \end{frame}
 
 \subsection{Types of Secrets}
@@ -324,16 +350,16 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
 \Large
 \begin{itemize}
     \item Avoids possible-world semantics by using Boolean algebra.
-    \begin{block}{Belief function:}
-    \[
-    B(a, p)
-    \]
-    \normalsize where:
-    \begin{itemize}
-        \item $B(a, p)$: agent $a$ believes proposition $p$.
-    \end{itemize}
-    \end{block}
 \end{itemize}
+\begin{block}{Belief function:}
+\[
+B(a, p)
+\]
+\normalsize where:
+\begin{itemize}
+    \item $B(a, p)$: agent $a$ believes proposition $p$.
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
@@ -373,17 +399,17 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
 \Large 
 \begin{itemize}
     \item States are terms in a Boolean algebra.
-    \begin{block}{Holding and Time Ordering functions:}
-    \[
-    HoldsAt(s, t), \quad t_1 \prec t_2
-    \]
-    \normalsize where:
-    \begin{itemize}
-        \item $HoldsAt(s, t)$: state $s$ holds at time $t$.
-        \item $t_1 \prec t_2$: time $t_1$ precedes $t_2$.
-    \end{itemize}
-    \end{block}
 \end{itemize}
+\begin{block}{Holding and Time Ordering functions:}
+\[
+HoldsAt(s, t), \quad t_1 \prec t_2
+\]
+\normalsize where:
+\begin{itemize}
+    \item $HoldsAt(s, t)$: state $s$ holds at time $t$.
+    \item $t_1 \prec t_2$: time $t_1$ precedes $t_2$.
+\end{itemize}
+\end{block}
 \end{frame}
 
 \subsection{State Classifications in $Log_AS$}
@@ -421,18 +447,18 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
         \item Time ($\sigma_T$)
         \item States ($\sigma_S$)
     \end{itemize}
-    \begin{block}{Functions:}
-    \[
-    B(a, p), \; I(a, p), \; R(a, p), \;
-    Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
-    \]
-    \end{block}
 \end{itemize}
+\begin{block}{Functions:}
+\[
+B(a, p), \; I(a, p), \; R(a, p), \;
+Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
+\]
+\end{block}
 \end{frame}
 
 \subsection{Axioms, Theorems, and Proofs}
 \begin{frame}
-\frametitle{Key Axioms and Theorems}
+\frametitle{Axioms}
 \Large 
 \begin{itemize}
     \item Belief follows KD45:
@@ -440,33 +466,91 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
         \Large 
         \item Distribution, consistency, positive introspection, and negative introspection.
     \end{itemize}
+\end{itemize}
+\begin{block}{Belief Axioms:}
+    \Large
+    \normalfont
+    (B1) $B(a, p) \wedge B(a, p \rightarrow q) \rightarrow B(a, q)$ \\
+    (B2) $B(a, p) \rightarrow \neg B(a, \neg p)$ \\
+    (B3) $B(a, p) \rightarrow B(a, B(a, p))$ \\
+    (B4) $\neg B(a, p) \rightarrow B(a, \neg B(a, p))$ \\    
+    (B5) $\text{If } \vdash p \text{ then } B(a, p)$
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Axioms}
+\Large 
+\begin{itemize}
     \item Intention follows KD:
     \begin{itemize}
         \Large 
         \item Distribution, consistency.
     \end{itemize}
 \end{itemize}
+\begin{block}{Intention Axioms:}
+    \Large
+    \normalfont
+    (I1) $I(a, p) \wedge I(a, p \rightarrow q) \rightarrow I(a, q)$ \\
+    (I2) $I(a, p) \rightarrow \neg I(a, \neg p)$ \\
+    (I3) \text{If } $\vdash p$ \text{ then } $I(a, p)$
+\end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{Key Axioms and Theorems} % Axioms
-\begin{itemize}
-    \item Text
-\end{itemize}
+\frametitle{Axioms}
+\begin{block}{Belief--Intention Bridge Axioms:}
+    \Large
+    \normalfont
+    (IB1) $\neg I(a, p) \rightarrow B(a, \neg I(a, p))$ \\
+    (IB2) $B(a, \neg I(a, p)) \rightarrow \neg I(a, p)$ \\
+    (IB3) $I(a, p) \rightarrow B(a, I(a,  p))$ \\
+    (IB4) $B(a, I(a, p)) \rightarrow I(a, p)$ \\
+    (IB5) $I(a, p) \rightarrow \neg B(a, \neg p)$
+\end{block}
+\begin{block}{Revelation Axioms:}
+    \Large
+    \normalfont
+    (R1) $\text{If } \vdash p \text{ then } R(a, p)$ \\
+    (R2) $\text{If } \vdash p \text{ then } \neg R(a, \neg p)$ \\
+    (R3) $\text{If } \vdash p \rightarrow q \text{ then } R(a, p) \rightarrow R(a, q)$ \\
+    (R4) $R(a, \exists b(R(b, p))) \rightarrow R(a, p)$
+\end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{Key Axioms and Theorems} % Theorems
-\begin{itemize}
-    \item Text
-\end{itemize}
+\frametitle{Axioms}
+\begin{block}{Belief--Revelation Bridge Axioms:}
+    \Large
+    \normalfont
+    (BR1) $[B(a, p \rightarrow q) \wedge \neg B(a, \neg p)] \rightarrow [R(a, p) \rightarrow R(a, q)]$ \\
+    (BR2) $R(a, p) \rightarrow B(a, R(a, p))$
+\end{block}
+\begin{block}{Group Membership Axioms:}
+    \Large
+    \normalfont
+    (G1) $Mem(a, [b]) \leftrightarrow (a = b)$ \\
+    (G2) $Mem(a, G_1 \sqcup G_2) \leftrightarrow Mem(a, G_1) \vee Mem(a, G_2)$ \\
+    (G3) $Mem(a, G_1 \sqcap G_2) \leftrightarrow Mem(a, G_1) \wedge Mem(a, G_2)$
+\end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{Proofs}
+\frametitle{Theorems}
 \begin{itemize}
-    \item Text
+    \item These theorems can be derived from the axioms:
 \end{itemize}
+\begin{block}{Theorems:}
+    \Large
+    \normalfont
+    (T1) $R(a, p \wedge q) \rightarrow R(a, p) \wedge R(a, q)$ \\
+    (T2) $B(a, p) \rightarrow R(a, p)$ \\
+    (T3) $R(a, p) \leftrightarrow R(a, R(a, p))$ \\
+    (T4) $B(a, p) \rightarrow B(a, R(a, p))$ \\
+    (T5) $B(a, R(a, p)) \rightarrow R(a, p)$ \\
+    (T6) $B(a, \neg R(a, p)) \rightarrow \neg R(a, p)$ \\
+    (T7) $R(a, B(a, p)) \rightarrow B(a, R(a, p))$
+\end{block}
 \end{frame}
 
 \subsection{Removing Logical Omniscience}
