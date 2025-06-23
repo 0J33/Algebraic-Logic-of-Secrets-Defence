@@ -122,96 +122,96 @@
 \end{itemize}
 \end{frame}
 
-\subsection{Secrets}
-\begin{frame}
-\frametitle{What is a Secret?}
-\Large
-\begin{itemize}
-    \item \textbf{Secrets} are a true piece of information that is kept hidden from others.
-    \item Examples:
-    \begin{itemize}
-        \item Classified military maps.
-        \item Exam questions before release.
-        \item Personal information like passwords.
-        \item Credit card PINs.
-        \item Hidden treasure locations.
-        % \item Corporate trade secrets.
-        % \item Sensitive medical records.
-        % \item Political strategies.
-        % \item Personal relationships (e.g., romantic interests).
-    \end{itemize}
-    \item A Secret is not just the information itself, but rather that it holds a specific confidential meaning.
-\end{itemize}
-\end{frame}
+% \subsection{Secrets}
+% \begin{frame}
+% \frametitle{What is a Secret?}
+% \Large
+% \begin{itemize}
+%     \item A \textbf{Secret} is a true piece of information that is kept hidden from others.
+%     \item Examples:
+%     \begin{itemize}
+%         \item Classified military maps.
+%         \item Personal information like passwords.
+%         \item Credit card PINs.
+%         \item Hidden treasure locations.
+%         % \item Exam questions before release.
+%         % \item Corporate trade secrets.
+%         % \item Sensitive medical records.
+%         % \item Political strategies.
+%         % \item Personal relationships (e.g., romantic interests).
+%     \end{itemize}
+%     \item A Secret is not just the information itself, but rather that it holds a specific confidential meaning.
+% \end{itemize}
+% \end{frame}
 
 %=========Background=========%
 
-\section{Background}
+% \section{Background}
 
-\subsection{Propositional \& Modal Logic}
-\begin{frame}
-\frametitle{Propositional Logic}
-    \Large 
-    \textbf{Propositional Logic (PPL):}
-    \begin{itemize}
-        \item Basic true/false statements combined with connectives.
-        \item No context or agents.
-    \end{itemize}
-    \begin{block}{Example}
-        \[
-        p \wedge q \rightarrow r
-        \]
-    \end{block}
-\end{frame}
+% \subsection{Propositional \& Modal Logic}
+% \begin{frame}
+% \frametitle{Propositional Logic}
+%     \Large 
+%     \textbf{Propositional Logic (PPL):}
+%     \begin{itemize}
+%         \item Basic true/false statements combined with connectives.
+%         \item No context or agents.
+%     \end{itemize}
+%     \begin{block}{Example}
+%         \[
+%         p \wedge q \rightarrow r
+%         \]
+%     \end{block}
+% \end{frame}
 
-\begin{frame}
-\frametitle{Modal Logic}
-    \Large 
-    \textbf{Propositional Modal Logic (PML):}
-    \begin{itemize}
-        \item Adds modal operators: \\
-        Necessity ($\Box$) and possibility ($\Diamond$).
-        \item Uses possible worlds semantics.
-    \end{itemize}
-    \begin{block}{Example}
-        \[
-        \Box p \rightarrow q, \quad
-        \Diamond r \rightarrow \Box \neg s.
-        \]
-    \end{block}
-\end{frame}
+% \begin{frame}
+% \frametitle{Modal Logic}
+%     \Large 
+%     \textbf{Propositional Modal Logic (PML):}
+%     \begin{itemize}
+%         \item Adds modal operators: \\
+%         Necessity ($\Box$) and possibility ($\Diamond$).
+%         \item Uses possible worlds semantics.
+%     \end{itemize}
+%     \begin{block}{Example}
+%         \[
+%         \Box p \rightarrow q, \quad
+%         \Diamond r \rightarrow \Box \neg s.
+%         \]
+%     \end{block}
+% \end{frame}
 
-\begin{frame}
-\frametitle{First-Order Modal Logic (FOML)}
-    \Large 
-    \textbf{First-Order Modal Logic (FOML):}
-    \begin{itemize}
-        \item Extends PML with quantifiers and predicates.
-        \item Allows reasoning about properties of objects.
-    \end{itemize}
-    \begin{block}{Example}
-        \[
-        \forall x (\Box P(x) \rightarrow Q(x)).
-        \]
-    \end{block}
-\end{frame}
+% \begin{frame}
+% \frametitle{First-Order Modal Logic (FOML)}
+%     \Large 
+%     \textbf{First-Order Modal Logic (FOML):}
+%     \begin{itemize}
+%         \item Extends PML with quantifiers and predicates.
+%         \item Allows reasoning about properties of objects.
+%     \end{itemize}
+%     \begin{block}{Example}
+%         \[
+%         \forall x (\Box P(x) \rightarrow Q(x)).
+%         \]
+%     \end{block}
+% \end{frame}
 
-\begin{frame}
-\frametitle{Interpretation of Modal Logic}
-\Large
-\begin{itemize}
-    \item A model $\mathcal{M} = (W, R, A)$ assigns truth to formulas at each world $w \in W$.
-\end{itemize}
-\begin{block}{Basic interpretation rules:}
-\[
-\llbracket T \rrbracket^{\mathcal{M}, w} = \top, 
-\quad 
-\llbracket F \rrbracket^{\mathcal{M}, w} = \bot, 
-\quad 
-\llbracket P \rrbracket^{\mathcal{M}, w} = A(P)(w)
-\]
-\end{block}
-\end{frame}
+% \begin{frame}
+% \frametitle{Interpretation of Modal Logic}
+% \Large
+% \begin{itemize}
+%     \item A model $\mathcal{M} = (W, R, A)$ assigns truth to formulas at each world $w \in W$.
+% \end{itemize}
+% \begin{block}{Basic interpretation rules:}
+% \[
+% \llbracket T \rrbracket^{\mathcal{M}, w} = \top, 
+% \quad 
+% \llbracket F \rrbracket^{\mathcal{M}, w} = \bot, 
+% \quad 
+% \llbracket P \rrbracket^{\mathcal{M}, w} = A(P)(w)
+% \]
+% \end{block}
+% \end{frame}
 
 %=========Theory of Secrets=========%
 
@@ -279,7 +279,7 @@ Secret(\phi, K, N, \psi, t)
 \end{itemize}
 \begin{block}{Core operators:}
 \[ 
-B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G) 
+B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G), \quad \BoxStar \phi 
 \]
 \normalsize where:
 \begin{itemize}
@@ -288,6 +288,7 @@ B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G
     \item $R(A, \phi)$: Agent A reveals $\phi$.
     \item $H(\phi, t)$: Holds at time $t$.
     \item $Mem(A, G)$: Agent A is a member of group G.
+    \item $\BoxStar \phi$: Represents necessity across histories that share the same past.
 \end{itemize}
 \end{block}
 \end{frame}
@@ -451,7 +452,7 @@ HoldsAt(s, t), \quad t_1 \prec t_2
 \begin{block}{Functions:}
 \[
 B(a, p), \; I(a, p), \; R(a, p), \;
-Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
+Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2 \; \BoxStar p
 \]
 \end{block}
 \end{frame}
@@ -497,43 +498,43 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
 \end{block}
 \end{frame}
 
-\begin{frame}
-\frametitle{Axioms}
-\begin{block}{Belief--Intention Bridge Axioms:}
-    \Large
-    \normalfont
-    (IB1) $\neg I(a, p) \rightarrow B(a, \neg I(a, p))$ \\
-    (IB2) $B(a, \neg I(a, p)) \rightarrow \neg I(a, p)$ \\
-    (IB3) $I(a, p) \rightarrow B(a, I(a,  p))$ \\
-    (IB4) $B(a, I(a, p)) \rightarrow I(a, p)$ \\
-    (IB5) $I(a, p) \rightarrow \neg B(a, \neg p)$
-\end{block}
-\begin{block}{Revelation Axioms:}
-    \Large
-    \normalfont
-    (R1) $\text{If } \vdash p \text{ then } R(a, p)$ \\
-    (R2) $\text{If } \vdash p \text{ then } \neg R(a, \neg p)$ \\
-    (R3) $\text{If } \vdash p \rightarrow q \text{ then } R(a, p) \rightarrow R(a, q)$ \\
-    (R4) $R(a, \exists b(R(b, p))) \rightarrow R(a, p)$
-\end{block}
-\end{frame}
+% \begin{frame}
+% \frametitle{Axioms}
+% \begin{block}{Belief--Intention Bridge Axioms:}
+%     \Large
+%     \normalfont
+%     (IB1) $\neg I(a, p) \rightarrow B(a, \neg I(a, p))$ \\
+%     (IB2) $B(a, \neg I(a, p)) \rightarrow \neg I(a, p)$ \\
+%     (IB3) $I(a, p) \rightarrow B(a, I(a,  p))$ \\
+%     (IB4) $B(a, I(a, p)) \rightarrow I(a, p)$ \\
+%     (IB5) $I(a, p) \rightarrow \neg B(a, \neg p)$
+% \end{block}
+% \begin{block}{Revelation Axioms:}
+%     \Large
+%     \normalfont
+%     (R1) $\text{If } \vdash p \text{ then } R(a, p)$ \\
+%     (R2) $\text{If } \vdash p \text{ then } \neg R(a, \neg p)$ \\
+%     (R3) $\text{If } \vdash p \rightarrow q \text{ then } R(a, p) \rightarrow R(a, q)$ \\
+%     (R4) $R(a, \exists b(R(b, p))) \rightarrow R(a, p)$
+% \end{block}
+% \end{frame}
 
-\begin{frame}
-\frametitle{Axioms}
-\begin{block}{Belief--Revelation Bridge Axioms:}
-    \Large
-    \normalfont
-    (BR1) $[B(a, p \rightarrow q) \wedge \neg B(a, \neg p)] \rightarrow [R(a, p) \rightarrow R(a, q)]$ \\
-    (BR2) $R(a, p) \rightarrow B(a, R(a, p))$
-\end{block}
-\begin{block}{Group Membership Axioms:}
-    \Large
-    \normalfont
-    (G1) $Mem(a, [b]) \leftrightarrow (a = b)$ \\
-    (G2) $Mem(a, G_1 \sqcup G_2) \leftrightarrow Mem(a, G_1) \vee Mem(a, G_2)$ \\
-    (G3) $Mem(a, G_1 \sqcap G_2) \leftrightarrow Mem(a, G_1) \wedge Mem(a, G_2)$
-\end{block}
-\end{frame}
+% \begin{frame}
+% \frametitle{Axioms}
+% \begin{block}{Belief--Revelation Bridge Axioms:}
+%     \Large
+%     \normalfont
+%     (BR1) $[B(a, p \rightarrow q) \wedge \neg B(a, \neg p)] \rightarrow [R(a, p) \rightarrow R(a, q)]$ \\
+%     (BR2) $R(a, p) \rightarrow B(a, R(a, p))$
+% \end{block}
+% \begin{block}{Group Membership Axioms:}
+%     \Large
+%     \normalfont
+%     (G1) $Mem(a, [b]) \leftrightarrow (a = b)$ \\
+%     (G2) $Mem(a, G_1 \sqcup G_2) \leftrightarrow Mem(a, G_1) \vee Mem(a, G_2)$ \\
+%     (G3) $Mem(a, G_1 \sqcap G_2) \leftrightarrow Mem(a, G_1) \wedge Mem(a, G_2)$
+% \end{block}
+% \end{frame}
 
 \begin{frame}
 \frametitle{Theorems}
@@ -584,7 +585,7 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
         \Large
         \item Agents $x$, $y$, and $z$.
         \item Secret $\phi$ known by $x$ and $y$.
-        \item C must not know $\phi$.
+        \item $z$ must not know $\phi$.
     \end{itemize}
     \item Formalization:
     \[
@@ -621,16 +622,16 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
 \frametitle{Secrecy Evolution}
 \begin{itemize}
     \Large
-    \item If A reveals $\phi$ at $(h,t)$:
+    \item If $x$ reveals $\phi$ at $(h,t)$:
     \begin{itemize}
         \Large
         \item $R(z, \phi)$ holds at $(h,t)$.
         \item Secrecy condition $\psi$ no longer holds at $(h,t)$.
-        \item C may learn $\phi$ in the future.
+        \item $z$ may learn $\phi$ in the future.
     \end{itemize}
     \item $Log_ASec$ tracks this via:
     \[
-    \llbracket R(A, \phi) \rrbracket^{h,t} = \text{true}
+    \llbracket R(z, \phi) \rrbracket^{h,t} = \text{true}
     \Longrightarrow 
     \llbracket \psi \rrbracket^{h,t} = \text{false}
     \]
@@ -670,49 +671,49 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2
 
 %=========References=========%
 
-\begin{frame}
-\frametitle{References}
-\footnotesize
-\begin{itemize}
-    \item [1] Brandon Bennett and Antony P. Galton. A unifying semantics for time and events.
-    Artificial Intelligence, 153(1):13–48, 2004. Logical Formalizations and Commonsense
-    Reasoning.
-    \item [2] Patrick Blackburn, Maarten de Rijke, and Yde Venema. Modal Logic. Cambridge
-    University Press, 2001.
-    \item [3] Thomas Bolander. Self-Reference and Paradox. In Edward N. Zalta and Uri Nodel-
-    man, editors, The Stanford Encyclopedia of Philosophy. Metaphysics Research Lab,
-    Stanford University, Fall 2024 edition, 2024.
-    \item [4] Ronald Fagin, Joseph Y. Halpern, Yoram Moses, and Moshe Y. Vardi. Reasoning
-    About Knowledge. MIT Press, 1995.
-    \item [5] James Garson. Modal Logic. In Edward N. Zalta and Uri Nodelman, editors, The
-    Stanford Encyclopedia of Philosophy. Metaphysics Research Lab, Stanford Univer-
-    sity, Spring 2024 edition, 2024.
-    \item [6] Paul R. Halmos. The basic concepts of algebraic logic. Journal of Symbolic Logic,
-    23(2):223–223, 1958.
-    \item [7] Joseph Y. Halpern and Kevin R. O’Neill. On the logic of secrecy. Journal of Com-
-    puter Security, 12(2):229–272, 2004.
-\end{itemize}
-\end{frame}
+% \begin{frame}
+% \frametitle{References}
+% \footnotesize
+% \begin{itemize}
+%     \item [1] Brandon Bennett and Antony P. Galton. A unifying semantics for time and events.
+%     Artificial Intelligence, 153(1):13–48, 2004. Logical Formalizations and Commonsense
+%     Reasoning.
+%     \item [2] Patrick Blackburn, Maarten de Rijke, and Yde Venema. Modal Logic. Cambridge
+%     University Press, 2001.
+%     \item [3] Thomas Bolander. Self-Reference and Paradox. In Edward N. Zalta and Uri Nodel-
+%     man, editors, The Stanford Encyclopedia of Philosophy. Metaphysics Research Lab,
+%     Stanford University, Fall 2024 edition, 2024.
+%     \item [4] Ronald Fagin, Joseph Y. Halpern, Yoram Moses, and Moshe Y. Vardi. Reasoning
+%     About Knowledge. MIT Press, 1995.
+%     \item [5] James Garson. Modal Logic. In Edward N. Zalta and Uri Nodelman, editors, The
+%     Stanford Encyclopedia of Philosophy. Metaphysics Research Lab, Stanford Univer-
+%     sity, Spring 2024 edition, 2024.
+%     \item [6] Paul R. Halmos. The basic concepts of algebraic logic. Journal of Symbolic Logic,
+%     23(2):223–223, 1958.
+%     \item [7] Joseph Y. Halpern and Kevin R. O’Neill. On the logic of secrecy. Journal of Com-
+%     puter Security, 12(2):229–272, 2004.
+% \end{itemize}
+% \end{frame}
 
-\begin{frame}
-\frametitle{References (cont.)}
-\footnotesize
-\begin{itemize}
-    \item [8] Peter Hawke, Aybuke Ozgun, and Francesco Berto. The fundamental problem of
-    logical omniscience. Journal of Philosophical Logic, 49(4):727–766, 2020.
-    \item [9] Haythem O. Ismail. $Log_AB$: A first-order, non-paradoxical, algebraic logic of belief.
-    Logic Journal of the IGPL, 20(5):774–795, 03 2012.
-    \item [10] Haythem O. Ismail. Stability in a commonsense ontology of states. Proceedings of
-    the Eleventh International Symposium on Logical Formalization of Commonsense
-    Reasoning (COMMONSENSE 2013), Agya Napa, Cyprus, 2013.
-    \item [11] Haythem O. Ismail and Merna Shafie. A commonsense theory of secrets. IOS Press,
-    Formal Ontology in Information Systems:77–91, 2020.
-    \item [12] Robert Kowalski and Marek Sergot. A logic-based calculus of events. New Generation
-    Computing, 4(1):67–95, 1986.
-    \item [13] John-Jules Meyer and Wiebe van der Hoek. Epistemic Logic for AI and Computer
-    Science. Cambridge University Press, 2004.
-\end{itemize}
-\end{frame}
+% \begin{frame}
+% \frametitle{References (cont.)}
+% \footnotesize
+% \begin{itemize}
+%     \item [8] Peter Hawke, Aybuke Ozgun, and Francesco Berto. The fundamental problem of
+%     logical omniscience. Journal of Philosophical Logic, 49(4):727–766, 2020.
+%     \item [9] Haythem O. Ismail. $Log_AB$: A first-order, non-paradoxical, algebraic logic of belief.
+%     Logic Journal of the IGPL, 20(5):774–795, 03 2012.
+%     \item [10] Haythem O. Ismail. Stability in a commonsense ontology of states. Proceedings of
+%     the Eleventh International Symposium on Logical Formalization of Commonsense
+%     Reasoning (COMMONSENSE 2013), Agya Napa, Cyprus, 2013.
+%     \item [11] Haythem O. Ismail and Merna Shafie. A commonsense theory of secrets. IOS Press,
+%     Formal Ontology in Information Systems:77–91, 2020.
+%     \item [12] Robert Kowalski and Marek Sergot. A logic-based calculus of events. New Generation
+%     Computing, 4(1):67–95, 1986.
+%     \item [13] John-Jules Meyer and Wiebe van der Hoek. Epistemic Logic for AI and Computer
+%     Science. Cambridge University Press, 2004.
+% \end{itemize}
+% \end{frame}
   
 %=========End=========%
 
