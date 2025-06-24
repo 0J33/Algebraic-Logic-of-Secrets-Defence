@@ -112,14 +112,21 @@
 \section{Introduction}
 \begin{frame}
 \frametitle{Introduction}
-\Large
-\begin{itemize}
-    \item Secrecy is vital for trust, privacy, and communication in social interactions.
-    \item Existing logics rarely model secrecy in everyday agent reasoning.
-    \item This work introduces $Log_ASec$, an algebraic logic of secrets.
-    \item Integrates belief, intention, revelation, and Versatile Event Logic.
-    \item Aims to enable realistic, explainable reasoning in multi-agent systems.
-\end{itemize}
+
+\begin{columns}[c]
+    \column{0.6\textwidth}
+    \Large
+    \begin{itemize}
+        \item AI models and agents are rapidly becoming part of daily life.
+        \item They must understand and handle secrets for trust and privacy.
+        \item Existing logics do not model secrecy realistically.
+    \end{itemize}
+
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/irobot3.png}
+\end{columns}
+
 \end{frame}
 
 % \subsection{Secrets}
@@ -220,14 +227,28 @@
 \begin{frame}
 \frametitle{Theory of Secrets}
 
+\begin{columns}[c]
+
+% ====== Column 1: Text ======
+\column{0.7\textwidth}
+
 \Large What is a Secret?
 
 \vspace{1em}
 
 \begin{block}{Definition (Secretum and Secreta):}  
-Objects of secrecy, called \emph{secreta} (plural of \emph{secretum}), are the propositions representing confidential information.  
+\emph{Secreta} (plural of \emph{secretum}), are the propositions representing confidential information.  
 Secrets are not these objects themselves, but relations between \emph{secreta} and other entities (e.g., secret keepers and nescients).
 \end{block}
+
+% ====== Column 2: Image ======
+\column{0.3\textwidth}
+
+\centering
+\includegraphics[width=\linewidth]{images/shield.png}
+
+\end{columns}
+
 \end{frame}
 
 \subsection{Intuitions About Secrects}
@@ -240,7 +261,7 @@ Secrets are not these objects themselves, but relations between \emph{secreta} a
     \item Secrets require at least one \textbf{nescient} (someone kept unaware).
     \item Keepers and nescients form structured groups, which can change over time.
     \item A secret exists only under a valid \textbf{secrecy condition}.
-    \item Secrets are inherently \textbf{temporary} — they expire or get revealed.
+    \item Secrets are inherently \textbf{temporary}, they expire or get revealed.
     \item Secret keepers \textbf{believe} the secreta and the condition.
     \item Secret keepers do \textbf{not believe} it has been revealed.
     \item Secret keepers \textbf{intend} to prevent revelation while the condition holds.
@@ -315,19 +336,30 @@ B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G
 \subsection{Modeling Time with VEL}
 \begin{frame}
 \frametitle{Modeling Time with VEL}
+
+\begin{columns}[c]
+
+\column{0.6\textwidth}
+
 \Large
 \begin{itemize}
     \item Versatile Event Logic (VEL) structures time as branching histories.
-    \item Each moment has:
+    \item Each moment (state) has:
     \begin{itemize}
-        \Large
-        \item Unique past
-        \item Multiple possible futures
+        \item Unique past (history)
+        \item Multiple possible futures (branches)
     \end{itemize}
     \item Secrets persist unless an event changes them.
 \end{itemize}
-\end{frame}
 
+\column{0.4\textwidth}
+
+\centering
+\includegraphics[width=\linewidth]{images/timeline.png}
+
+\end{columns}
+
+\end{frame}
 %=========Algebraic Logic Foundations=========%
 
 \section{Algebraic Logic Foundations}
@@ -335,15 +367,27 @@ B(A, \phi), \quad I(A, \phi), \quad R(A, \phi), \quad H(\phi, t), \quad Mem(A, G
 \subsection{Modal vs Algebraic Logic}
 \begin{frame}
 \frametitle{Modal vs Algebraic Logic}
+
+\begin{columns}[c]
+
+\column{0.6\textwidth}
+
 \Large
 \begin{itemize}
     \item \textbf{Modal Logic:} Possible worlds semantics.
-    % ; uses necessity ($\Box$) and possibility ($\Diamond$) operators.
-    \item \textbf{Algebraic Logic:} Explicit algebraic structures (e.g., Boolean algebras).
+    \item \textbf{Algebraic Logic:} Explicit algebraic structures.
     \item More transparent reasoning steps.
     \item Avoids paradoxes (e.g., self-reference).
     \item Better suited for explainable agent models.
 \end{itemize}
+
+\column{0.4\textwidth}
+
+\centering
+\includegraphics[width=\linewidth]{images/worlds.png}
+
+\end{columns}
+
 \end{frame}
 
 \subsection{Algebraic Logic of Belief ($Log_AB$)}
@@ -425,7 +469,7 @@ HoldsAt(s, t), \quad t_1 \prec t_2
         \item \textbf{ETER (Eternal)}: is the same at all times.
         \item \textbf{ATEMP (Atemporal)}: unchanged, doesn't depend on time.
         \item \textbf{PERM (Permanent)}: once holds, never stops holding.
-        \item \textbf{CO-PERM (Co-Permanent)}: compliment of a permanent state.
+        \item \textbf{CO-PERM (Co-Permanent)}: an event's occurrence being in the future.
         \item \textbf{TEMP (Temporary)}: may change over time.
         \item \textbf{TRANS (Transient)}: stops and starts holding over time.
     \end{itemize}
@@ -579,11 +623,17 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
 
 \begin{frame}
 \frametitle{Example: Secret in a Group}
+
+\begin{columns}[c]
+
+\column{0.75\textwidth}
+
+
+
+\Large
 \begin{itemize}
-    \Large
     \item Scenario:
     \begin{itemize}
-        \Large
         \item Agents $x$, $y$, and $z$.
         \item Secret $\phi$ known by $x$ and $y$.
         \item $z$ must not know $\phi$.
@@ -594,6 +644,14 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
     \]
     \item Secrecy condition $\psi$: Holds until $x$ or $y$ reveals $\phi$.
 \end{itemize}
+
+\column{0.25\textwidth}
+
+\centering
+\includegraphics[width=\linewidth]{images/s1.png}
+
+\end{columns}
+
 \end{frame}
 
 \begin{frame}
@@ -621,22 +679,33 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
 
 \begin{frame}
 \frametitle{Secrecy Evolution}
+
+\begin{columns}[c]
+
+\column{0.65\textwidth}
+
+\Large
 \begin{itemize}
-    \Large
-    \item If $x$ reveals $\phi$ at $(h,t)$:
+    \item If $x$ reveals $\phi$ to $z$ at $(h,t)$:
     \begin{itemize}
-        \Large
         \item $R(z, \phi)$ holds at $(h,t)$.
         \item Secrecy condition $\psi$ no longer holds at $(h,t)$.
-        \item $z$ may learn $\phi$ in the future.
     \end{itemize}
-    \item $Log_ASec$ tracks this via:
+    \item $Log_{ASec}$ tracks this via:
     \[
     \llbracket R(z, \phi) \rrbracket^{h,t} = \text{true}
     \Longrightarrow 
     \llbracket \psi \rrbracket^{h,t} = \text{false}
     \]
 \end{itemize}
+
+\column{0.35\textwidth}
+
+\centering
+\includegraphics[width=\linewidth]{images/s2.png}
+
+\end{columns}
+
 \end{frame}
 
 %=========Conclusion & Future Work=========%
@@ -652,8 +721,7 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
     \item Integrated belief, states, Versatile Event Logic, and secrecy conditions.
     \item Defined syntax, semantics, and axioms for core operators.
     \item Removed logical omniscience (K axiom) for realistic agent modeling.
-    \item Established a flexible foundation for theory and applications.
-    \item Provided formal proofs and a worked scenario.
+    \item Provided formal proofs for key theorems.
 \end{itemize}
 \end{frame}
 
