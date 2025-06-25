@@ -642,7 +642,7 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
     \[
     Secret(\phi, \{x,y\}, \{z\}, \psi, t)
     \]
-    \item Secrecy condition $\psi$: Holds until $x$ or $y$ reveals $\phi$.
+    \item Secrecy condition $\psi$: Holds until $x$ or $y$ reveals $\phi$ to $z$.
 \end{itemize}
 
 \column{0.25\textwidth}
@@ -691,7 +691,7 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
         \item $R(z, \phi)$ holds at $(h,t)$.
         \item Secrecy condition $\psi$ no longer holds at $(h,t)$.
     \end{itemize}
-    \item $Log_{ASec}$ tracks this via:
+    \item $Log_ASec$ tracks this via:
     \[
     \llbracket R(z, \phi) \rrbracket^{h,t} = \text{true}
     \Longrightarrow 
@@ -731,10 +731,10 @@ Mem(a, G), \; HoldsAt(p, t), \; t_1 \prec t_2, \; \BoxStar \; p
 \begin{itemize}
     \Large
     \item Complete proofs for all theorems not covered.
+    \item Further refinement of axioms and theorems.
     \item Could be implemented in Prolog for automated secrecy reasoning.
     \item Simulate agent reasoning in secrecy scenarios.
     \item Apply to real-world privacy and information security use cases.
-    \item Further refinement of axioms and theorems.
 \end{itemize}
 \end{frame}
 
